@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "HealthFeast: Debug Django Backend",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/manage.py",
+      "args": ["runserver", "127.0.0.1:8000", "--noreload"],
+      "cwd": "${workspaceFolder}/backend",
+      "python": "${workspaceFolder}/backend/.venv/Scripts/python.exe",
+      "django": true,
+      "justMyCode": true
+    },
+    {
+      "name": "HealthFeast: Launch Frontend in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src"
+    },
+    {
+      "name": "HealthFeast: Launch Frontend in Edge",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend/src"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "HealthFeast: Full Stack (Django + Browser)",
+      "configurations": [
+        "HealthFeast: Debug Django Backend",
+        "HealthFeast: Launch Frontend in Chrome"
+      ],
+      "preLaunchTask": "HealthFeast: Start Frontend (Vite)"
+    }
+  ]
+}
